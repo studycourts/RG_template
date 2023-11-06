@@ -1,0 +1,172 @@
+---
+title: "Title of Working Paper: Sassy Subtitle"
+thanks: "Paper Prepared for Presentation at the Big Conference"
+abstract: "Here’s your abstract. Unlike the rest of the paper, this part is typically single-spaced. This should be a roughly 150-250 word summary of your paper. I’d suggest 1-2 sentences about the research question, 1-2 sentences about your theory/hypothesis, 1-2 sentences about how you test your hypothesis, and 1-2 sentences about your findings. If you’re feeling extra-fancy, you can also include a sentence about why this research is important. You’re almost always going to need to rewrite this abstract after you’ve completed your paper. Don’t let this thing drag on for more than a paragraph, though. After reading your abstract, the reader should know the main point of your paper and whether or not they want to read it. So, while it isn’t the most compelling reading, try not to turn your readers off here."
+author:
+  - name: Rebecca Gill, Ph.D.
+    affiliation: University of Nevada Las Vegas
+    email: rebecca.gill@unlv.edu
+    number: 1
+  - name: Absent Coauthor, Ph.D.
+    affiliation: Add another of these
+    email: for.more@authors.co
+    number: 2
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+bibliography: [references.bib, paperpack.bib]
+output: 
+  bookdown::pdf_document2:
+    template: paper_template.tex
+    keep_tex: true
+---
+
+## Introduction
+
+```{r setup, include = FALSE}
+
+# This chunk sets up the default options for rendering the code chunks in your paper. Most of the time, the settings I've included here are great for default settings. Remember to alter the individual chunk settings for those chunks producing tables or figures that you want your readers to see.
+
+knitr::opts_chunk$set(echo = FALSE, include = FALSE, 
+                      message = FALSE, warning = FALSE)
+
+```
+
+Welcome to this template!^[If you know how to use this and you don't want to have to delete all of this jibber-jabber before you can write your own paper, you can just use the file `BlankPaper.Rmd` and start writing right away.] What you’re reading now is the introduction. This is the start of your paper. Introductions can be anywhere from 3 paragraphs to several pages depending on how much you have to say and how long your entire paper ends up being. I’d recommend starting with something interesting to draw in your reader such as “fun” facts, illustrative stories, etc. This is the part where you tell the reader why your research matters. Somewhere in the introduction you’ll also want to state your research question.
+
+You’ll probably want at least one paragraph that talks about your theory and hypotheses. Don’t explain everything here, just enough for your reader to get a general idea of your argument. You may even want to say what’s missing from past literature or how your project fills a gap in past literature.
+
+In this section, you should also think about including a preview of how you test your arguments and what you find. If you don’t find support for your arguments, you might want to provide an explanation for why you think your results aren’t supported. This paper shouldn’t be a murder mystery, so don’t keep the reader in suspense. 
+
+The last paragraph of the introduction should be a roadmap of where the paper is going. Don’t just say that you “review the literature” and “do an analysis,” etc. Instead, replace these boring subheadings with what you actually accomplish in each section. So, instead of saying that you review the literature, you might say that you “review what we already know about [insert topic], emphasizing how little research there is about [the particular sub-sub-sub topic you’re addressing in your paper].”
+
+One last point: just because you’re writing an introduction, this doesn’t mean that you don’t have to cite sources for facts or arguments that you’ve gathered from elsewhere. I’ll be suspicious of introductions without citations. Your citations should be formatted consistently with a scholarly inline citation style. My preferred style is APSA, which is what I’ve used in this template.  For more information on inline citations in APSA format, see the section “Parenthetical Citations” beginning on p. 41 of the APSA Style Manual [@APSA2018]. Information on how to format the references in your works cited list can be found in the section “References” beginning on p. 45 of the APSA Style Manual (APSA 2018). 
+
+## Literature Review and/or Theory
+
+Here, you’ll talk about previous literature and how past work helps to build the foundation for your argument. You can have the literature review and theory combined or you can have them in separate sections. Either way you may want to break it up into subsections.
+
+One of the key things you'll need to do here is to cite your literature. It can be a little tricky to do this in \LaTeX, but it's much simpler using this Markdown template. Regardless, the first thing you'll need to do is to put your sources into the file `references.bib`, which you'll find in the same folder as the rest of the template's files.
+
+To cite sources, you'll use the citation key for the source you'd like to cite and the "at" symbol to tell Markdown what to do with it. If you'd like to cite a source in parentheses, you're going to put the symbol and key into parentheses [@APSA2018]. You might also wish to cite something in the text, like if you want to talk about what @APSA2018 says about formatting citations. 
+
+This paper is also set up to create a second bibliography, `paperpack.bib`, which collects information about the R packages you've used in your paper. You can cite those packages the same way. This means that you can cite packages like @R-dplyr in your paper. For more on how the citation keys are generated for the packages and the associated publications discussing those packages, see Chapter 4.6 in @RMarkdownCookbook. 
+
+### Subsection Title
+
+Subsections can be useful at many parts of your paper where you want to break up the writing a bit more so that a reader can focus on certain topics. These subsection headings might change as your paper develops, and that’s fine. These subsections should mirror the outline that underlies the structure of your paper. It’s also going to help a lot in terms of organizing your thoughts in a logical way (at least I hope it will!).
+
+Some things you’ll want to include in your literature review/theory section(s) are: a discussion of previous scholarship, identification of the general concept of the independent and dependent variables, and explanation of how the independent variable affects the dependent variable. 
+
+The best literature reviews integrate evidence from many scholars into a discussion that takes the reader down a carefully curated path that sets up the background information they need to know to understand your specific argument. When you're reading for your literature review, you'll likely read one article at a time and take notes in an article-by-article fashion. When you go to construct the literature review, however, you'll want to approach things topic-by-topic. If you find yourself writing entire paragraphs that summarize the contributions of each of the articles you've read, this can be a sign that your outline isn't detailed enough. Make sure that you're only calling on a reference to support the particular point you're making in any given sentence. Otherwise, you'll end up with something that looks more like a series of article summaries pasted together. This can be bewildering and frustrating for your reader. Make sure that you're the one "directing traffic" and keeping each of the authors you cite focused on the thing you're trying to accomplish in any given paragraph.
+
+### A Note on Theory
+	
+While your literature review goes over what we already know about your concepts from prior research, your theory is going to zero in on the precise causal story of how your outcome concept is influenced by the other concepts of interest you’ll be including in your model. Your theory should explain the HOW and WHY of the relationship. You’ll be talking about concepts in this section, not variables. It is from this story of HOW and WHY that you’ll be deriving your hypothesis. If your hypothesis is correct, what should we expect to see in terms of relationships among these concepts? If your hypothesis is incorrect, would you be able to tell that? These questions should help you to phrase your hypotheses. Indeed, you’ll usually be explicating your hypothesis at the end of your theory section.
+
+>Hypothesis 1: Your hypothesis can be set out from the rest of the text and should be near the end of this section (or at the end of the paragraph where you talk about the argument if you have multiple hypotheses).
+
+>Hypothesis 2: You might have multiple hypotheses. They can be set out in the same way. These can be like this or can be italicized. It’s up to you (and the journal you're submitting to). 
+
+It's not always necessary to write your hypotheses out this way. Some folks prefer to just explain them right in the text. The point is that your hypotheses should be easy for your reader to identify, since these hypotheses are the link between what you've already done in your paper and what you're about to do in your analysis section.
+
+## Data
+
+In this section, you talk about your dataset generally and how you measure your concepts of interest. You can call this part “Data,” “Data and Methods,” “Research Design,” or something similar that conveys what you’re doing here. I've been known to customize this a bit, using section titles like "A Case Study: The Nevada Judiciary" when I'm transitioning from a more general discussion of my theory into the specific context from which I draw the data used to test that theory.
+
+You need a couple of specific things in this section. They  include: (1) information about your data source(s), (2) information about the variables and their coding, (3) a defense of why this particular variable is an appropriate way to measure the concepts that you've linked together in your theory, and (4) some descriptive characteristics of each of those variables. In this section, you want to explain what your variables measure, NOT what you did to the original variables to get them to measure what you want. 
+
+A descriptive statistics table is generally required in your data and methods section. An example can be seen below in Table 1. At minimum, you would want to include such univariate statistics as the mean, the standard deviation, the minimum value, the maximum value, and the number of valid observations. You'll most likely want to do this using an R code chunk. You can find an example of this in Table \@ref(tab:desc).
+
+```{r libs}
+
+# I don't want this code or any of the warnings/messages to show up in my paper, so I leave the chunk settings as is for this one.
+
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(stargazer)
+library(sjPlot)
+
+```
+
+```{r desc, include = TRUE, results = "asis"}
+
+# I want the table I'm making in this chunk to show up in the paper, so I've changed the settings to include the output from this chunk and to display the resulting table without additional formatting ('asis').
+
+att.dat <- attitude
+stargazer(att.dat,
+          title = "Summary Table with Stargazer",
+          label = "tab:desc",
+          table.placement = "ht",
+          header = FALSE,
+          style = "apsr",
+          covariate.labels = c("Overall Rating", "Handling of Complaints", "No Special Privileges", "Opportunity to Learn", "Performance-Based Raises", "Too Critical", "Advancement"))
+
+```
+
+In this section, you might also include some basic bivariate analyses. I generally only include here anything I'd need in order to justify the inclusion/exclusion of certain variables or to document the bivariate relationship of a pair of variables that I plan to interact in my main models. If I do include something like a difference of means test, I'll often mention the substantive results in the text and include the relevant test statistic (with the degrees of freedom as a subscript and in parentheses) along with the p-value of that test statistic. Luckily, footnotes are pretty simple in R Markdown.^[This is a footnote. When you type it, make sure that you put your ending punctuation inside the brackets instead of outside the brackets. This keeps you from ending up with a sentence that drifts off in your footnote and a rogue punctuation mark after your footnote signifier in the text.] Again, this isn't required, but there are times when this is particularly useful.
+
+Somewhere in the your data section (which you'd then call something like "data and methods") or at the beginning of your analysis section, you'll want to explain the type of modeling approach you're going to use to analyze the data. You might include the equation for the model here, but this isn't always necessary. However, you will want to explain why you're opting for this particular strategy. So, if you have an ordinal dependent variable, you might explain which ordinal model you'll be using and mention why you chose it. You might say that you'll be using a PPO model because the proportional odds assumption was found to be inappropriate for certain variables. In the case of the ordinal logit example, you might include that Brant test in a methods appendix, too. 
+
+In fact, it's a good idea to put your "extra" models into the methods appendix part of this template just in case the journal you submit to will require it. Remember that you can simply comment this section out before you render your paper in the event that you don't need the methods appendix (or certain parts of it). However, it's a good place to keep track of what you did to arrive at the model you've chosen. You won't have to dig through a bunch of old Dropbox files or bullet journals to figure out why you made the model selections you made. Instead, it'll be right here along with everything else you used to create your working paper. Do you see the file `MyAppendix.Rmd`? You can put everything in there and then you'll know where to find it when you need it. Brilliant!
+
+## Analysis
+	
+This section can be called “Analysis,” “Results,” “Findings,” or another similar title. Here, you’re going to present your results in a table (probably), explain the type of model(s) used to test your hypotheses, an explanation of your findings, and connections to your hypotheses. To present the results of your model, you will generally want to generate a table of coefficient estimates and the standard goodness of fit measures for your model. You might not decide to include this table in the text of your paper, although I suspect you usually will. I've provided a sample table comparing three models in Table \@ref(tab:mods). If you decide to include just a plot of the coefficient estimates or perhaps a table of marginal predictions instead of your table of estimates, you'll still want to provide that traditional and properly-formatted table of model results in your methods appendix. Remember that any and all tables, figures, equations, etc. in your paper should be properly labeled and numbered. Each one that is included in your paper must be cross-referenced in the text (where you'll describe what the table, figure, etc. means).
+
+```{r mods, include = TRUE, results = "asis"}
+
+ols1.mod <- lm(rating ~ complaints + privileges + learning + raises + critical, 
+               data = att.dat)
+ols2.mod <- lm(rating ~ complaints + privileges + learning, 
+               data = att.dat)
+att.dat$high.rating <- (attitude$rating > 70)
+prob.mod <- glm(high.rating ~ learning + critical + advance,
+                data = att.dat, 
+                family = binomial(link = "probit"))
+stargazer(ols1.mod, ols2.mod, prob.mod, 
+          title = "Models Predicting Rating and High Rating",
+          label = "tab:mods",
+          table.placement = "ht",
+          header = FALSE,
+          style = "apsr",
+          dep.var.labels = c("Overall Rating", "High Rating"),
+          covariate.labels = c("Handling of Complaints", "No Special Privileges", "Opportunity to Learn", "Performance-Based Raises", "Too Critical", "Advancement"))
+
+```
+
+In your discussion of the results, each key variable that you discuss will likely have its own paragraph. Here, you're going to be talking in terms of variables and "unit change" relationships, etc. We'll save the discussion of what this actually means for your overall conceptual argument in the discussion section of the paper.
+
+When you are discussing the findings related to control variables, you can lump two or more of them into a single paragraph. Remember, though, that if one of your control variables gives you an interesting finding that is relevant to your overall conceptual argument, you'll also want to highlight that in the early stages of your model interpretation.^[Note that, if this is the case, you may also want to revisit your literature review and theory sections to make sure that you've provided enough set-up for this findings that your readers will be prepared for whatever finding you end up revealing here.] For every key variable, you need to talk about: the statistical significance of the coefficient estimate, and (only if the variable is a significant predictor in the model), the magnitude and direction of the relationship, and the substantive significance of the variable. 
+
+There are a variety of ways to talk about substantive significance. For OLS, when you’re interpreting the coefficient b associated with independent variable X, you’ll say that “a one-unit increase in X is associated with a b unit change in the dependent variable Y, all else equal.” Whatever your model, make sure that you're being very precise about the relationship between the independent variable and the dependent variable. Again, remember that each main independent variable and/or interaction should get its own paragraph (at least). For your control variables, you can lump some of them together in a paragraph if that seems to flow better. This is another time where you can look back to work you’ve already done. The preliminary models assignment should already include the information needed here.
+	
+The other thing you’re probably going to need in here is a plot of the marginal predicted values (e.g., for OLS, Gaussian, count models) or probabilities (e.g., for the various forms of logistic regression) to help your readers understand the effects of the variables in your model. You'll probably accomplish this in a code chunk using something like `ggeffects::ggpredict` [@R-ggeffects]. Remember to include proper figure numbering and labeling. You also must remember to refer in the text to any figures or tables in your paper to explain to the reader what it means. 
+
+## Discussion
+
+The discussion section is used to translate your results back into concepts. So, let’s say that, in your Results section, you found that a one unit increase in conservatism is associated with a 2-unit decrease in concern for the environment. Here, you’ll bring that back to the underlying concepts and how your findings relate to the theory you proposed earlier in the paper. You might explain that, as predicted, people who are more conservative do seem to be sensitive to the stated views of Republican party elites, in keeping with your Think What Elites Think Policy Messaging Theory. You want to focus on helping the reader understand what the results of your statistical analysis actually says about the concepts you introduced earlier in the paper. This isn’t just summarizing your paper for the reader, but you also shouldn’t be introducing wildly new concepts here. Instead, you want to explain to the reader how to apply what we learned from the regression analysis to the underlying concepts you started your paper with. You don’t have to address each and every little finding about your control variables here, but you’ll want to highlight the main findings of interest---not in terms of the variables, but in terms of the concepts underlying those variables. In other words, you’re translating your numbers back into words for your readers.
+
+## Conclusion
+
+This is where you sum up your paper. Like introductions, this can be anywhere from two-three paragraphs to several pages in length. Some things I would recommend including: a reminder of what the research question is, restatement of your theory and hypotheses, and information on your findings—did you find support for your arguments or not?
+
+You may also want to talk about any limitations of your current study, particularly if you did not find support for your hypotheses. You may want to talk about what future research should do. Should future scholars continue to look at this? Are there better measures they should collect? 
+
+Last, I would discuss any normative conclusions. Why is your research (and its results) important? Seriously, don't be too shy here. Most journals instruct their reviewers to make judgments about the originality and importance of a paper's findings. It's a little awkward, sure, but you need to bite the bullet and do a smidge of tooting your own horn a bit. If this is difficult for you, try asking a trusted colleague to review your paper and help you develop some language that highlights its importance. While the rest of the paper should be pretty objective and neutral, here you can be a bit more subjective. 
+
+If you like, you can include your conclusion as the end of your discussion section without creating a separate subheading. It depends upon your style, the norms of the outlet you're submitting your paper to, the length of your discussion section, and how much ground you think you need to cover in your conclusion. In political science, I think there is less of a norm requiring a separate conclusion section, so it's fine to just wrap up your discussion with a little something that ties everything together. The best way to approach this might be to pay attention to the way that your favorite articles on your topic tend to end.
+
+<!-- Your References section will appear here -->
+
+\newpage
+
+## References
+
+```{r packs}
+
+# To collect information about the packages used in the paper for the bibliographies. It should do this automatically, but sometimes you'll have to do it manually. This all depends on how the authors of the packages organized their package information.
+
+knitr::write_bib(c(.packages(), "bookdown", "ggeffects"), file = "paperpack.bib", tweak = TRUE)
+
+```
+

@@ -1,0 +1,50 @@
+---
+title: "Methods Appendix"
+bibliography: [references.bib]
+output: 
+  bookdown::pdf_document2:
+    template: appendix_template.tex
+    keep_tex: true
+---
+
+
+```{r setup, include = FALSE}
+
+knitr::opts_chunk$set(echo = FALSE, include = FALSE, 
+                      message = FALSE, warning = FALSE)
+
+```
+
+
+```{r libs, include = FALSE}
+
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(stargazer)
+library(sjPlot)
+library(sessioninfo)
+library(kableExtra)
+library(reshape)
+
+```
+
+First, I've included code to display your current $\textsf{R}$ session information. All of the information will end up in the object `si` in your current session's environment. You can call them one-at-a-time in the text if you like. 
+
+```{r sesh, include = TRUE, results = 'asis'}
+
+si <- session_info()
+sip.dat <- si$platform %>%
+  melt()
+
+sip.dat <- sip.dat[,c("L1", "value")]
+sip.dat$value <- gsub("@.*","", sip.dat$value)
+
+kable(sip.dat, col.names = NULL, caption = "Session Information: Platform") %>%
+  kable_styling(full_width = F)
+
+```
+
+You might decide that you want to say that you are running `r si$platform$version` in `r si$platform$ui` `r si$platform$rstudio` on a MacBook Pro `r si$platform$system` running `r si$platform$os`. Alternatively, you might wish to display all of the information in a table of some sort. I've done this in Table \@ref(tab:sesh).
+
+You'll probably want to organize your methods appendix using subheadings (with two # signs) or sub-subheadings (with three # signs). You'll be able to use numbered equations, figures, tables, etc.

@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+
+% -------------------- Packages -------------------- %
+
+% Font/input basics
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+% Critical math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% Tools for theorems, including restatement capability
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+
+% Local table of contents capability
+\usepackage{etoc}
+
+% General formatting
+\usepackage[margin=1in]{geometry}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{booktabs}
+\setcounter{secnumdepth}{0} % No numbered sections
+\usepackage[labelsep=period,font=small,labelfont=bf,margin=5ex]{caption}
+\usepackage{indentfirst} % Indent first paragraph of sections
+%\usepackage[parfill]{parskip} % Remove all indents
+
+% Bibliography and references
+\usepackage{multibib}
+\usepackage[sort]{natbib}
+\usepackage[bookmarks=false]{hyperref}
+
+% -------------------- Setup -------------------- %
+
+% Don't highlight references/links
+\hypersetup{
+  colorlinks=true,
+  citecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+% Set up natbib
+\bibpunct{(}{)}{;}{a}{}{,}  % citations like (Fearon 1995; Powell 1996, 1999)
+\def\citeapos#1{\citeauthor{#1}'s (\citeyear{#1})}  % Sartori's (2002)
+\renewcommand{\harvardurl}[1]{\textbf{URL:} \url{#1}}  % less-bad URLs in bibliography
+\defcitealias{APSA2018}{APSA 2018}
+\newcites{app}{Additional References}
+
+% Theorem environments (add more if needed)
+\declaretheorem{lemma}
+\declaretheorem{corollary}
+\declaretheorem{proposition}
+
+% -------------------- Metadata -------------------- %
+
+\title{$title$%
+  \thanks{$thanks$}
+}
+\author{$author1$%
+  \thanks{$affiliation1$, $email1$.}
+  \and $author2$%
+  \thanks{$affiliation2$, $email2$.}
+}
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\thispagestyle{empty}
+
+\begin{document}
+
+% -------------------- Title page -------------------- %
+
+%\setcounter{page}{0}
+
+
+% -------------------- Appendix body -------------------- %
+
+\clearpage
+\doublespacing
+
+$body$
+
+\singlespacing
+\newpage
+\bibliographystyleapp{apsa-leeper}
+\bibliographyapp{references}
+
+\end{document}

@@ -1,0 +1,169 @@
+\documentclass[12pt]{article}
+
+% This is Rebecca Gill. Welcome to my little template.
+
+% This template is to generate a nice-looking conference paper in
+% the style of a mid-2020s political scientist. Once you've 
+% written up your paper in the *.Rmd file, you can use this template
+% for your conference paper. Then, you can just use a different, 
+% journal-specific template to reformat this using a specific 
+% journal's submission requirements. Alternatively, using this
+% template will give you a *.tex file that you can adjust as needed
+% and submit to the journal once they've accepted your manuscript
+% for publication. Yay!
+
+% This template is a mashup of the work of many different folks.
+% I based most of this on the work of: 
+%      Xie et al. and the rest of the rticles package team
+%      Steven V. Miller and the templates in his package, stevetemplates
+%      Jeffrey Arnold and his psmanuscripts package
+% There are other pieces in here from around town, and I cite them in the
+% comments wherever I can. My apologies for anyone I've missed here.
+
+% -------------------- Packages -------------------- %
+
+% Font/input basics
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+%\usepackage{fouriernc}
+
+
+% Critical math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% Tools for theorems, including restatement capability
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{thm-restate}
+
+% Local table of contents capability
+\usepackage{etoc}
+
+% General formatting
+\usepackage[margin=1in]{geometry}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{booktabs}
+\setcounter{secnumdepth}{0} % No numbered sections
+\usepackage[labelsep=period,font=small,labelfont=bf,margin=5ex]{caption}
+%\usepackage{indentfirst} % Indent first paragraph of sections
+\usepackage[parfill]{parskip} % Remove all indents
+
+% Bibliography and references
+\usepackage{multibib}
+\usepackage[sort]{natbib}
+\usepackage[bookmarks=false]{hyperref}
+
+% -------------------- Setup -------------------- %
+
+% Don't highlight references/links
+\hypersetup{
+  colorlinks=true,
+  citecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+% Set up natbib
+\bibpunct{(}{)}{;}{a}{}{,}  % citations like (Fearon 1995; Powell 1996, 1999)
+\def\citeapos#1{\citeauthor{#1}'s (\citeyear{#1})}  % Sartori's (2002)
+\renewcommand{\harvardurl}[1]{\textbf{URL:} \url{#1}}  % less-bad URLs in bibliography
+\defcitealias{APSA2018}{APSA 2018}
+\newcites{app}{Additional References}
+
+% Theorem environments (add more if needed)
+\declaretheorem{lemma}
+\declaretheorem{corollary}
+\declaretheorem{proposition}
+
+% -------------------- Metadata -------------------- %
+
+\title{$title$%
+  \thanks{$thanks$}}
+
+% author block code adapted from 
+% dtholmes@mail.ubc.ca post on the lab-r-torian
+
+$if(author)$
+    \usepackage{authblk}
+    $for(author)$
+        $if(author.name)$
+            $if(author.number)$
+                \author[$author.number$]{$author.name$}
+            $else$
+                \author[]{$author.name$}
+            $endif$
+            $if(author.affiliation)$
+                $if(author.email)$
+                    \affil{$author.affiliation$ \thanks{$author.email$}}
+                $else$
+                    \affil{$author.affiliation$}
+                $endif$
+            $endif$
+            $else$  
+            \author{$author$}
+        $endif$
+    $endfor$
+$endif$
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+
+\begin{document}
+
+% -------------------- Title page -------------------- %
+
+\setcounter{page}{0}
+\maketitle
+\begin{abstract}
+\noindent $abstract$
+\end{abstract}
+\thispagestyle{empty}
+
+% -------------------- Paper body -------------------- %
+
+\clearpage
+\doublespacing
+
+$body$
+
+
+\renewcommand\refname{References}
+\thispagestyle{empty}
+\singlespacing
+\bibliographystyleapp{apsa-leeper}
+\bibliographyapp{references, paperpack}
+
+% code for the paperpack.bib file with references for 
+% packages used in the paper comes from ch. 4.6 of 
+% the R Markdown Cookbook by Xie, Dervieux, and Riederer
+% (visited 11/6/2023) http://bookdown.org/yihui/rmarkdown-cookbook
+
+\end{document}

@@ -1,0 +1,40 @@
+---
+title: 
+thanks: 
+abstract: 
+author:
+  - name: 
+    affiliation: 
+    email: 
+    number: 1
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+bibliography: [references.bib, paperpack.bib]
+output: 
+  bookdown::pdf_document2:
+    template: paper_template.tex
+    keep_tex: true
+---
+
+```{r setup, include = FALSE}
+
+knitr::opts_chunk$set(echo = FALSE, include = FALSE, 
+                      message = FALSE, warning = FALSE)
+
+```
+
+[Write your paper here.]
+
+<!-- Your References section will appear here -->
+
+\newpage
+
+## References
+
+```{r packs}
+
+# To collect information about the packages used in the paper for the bibliographies.
+
+knitr::write_bib(c(.packages(), "bookdown"), file = "paperpack.bib", tweak = TRUE)
+
+```
+
